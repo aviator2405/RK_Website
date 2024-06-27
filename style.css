@@ -3,34 +3,27 @@
     padding: 0;
     border: 0;
 }
+a{
+    text-decoration: inherit;
+    color: inherit;
+}
 #header{
     display: flex;
     padding-top: 20px;
     background-color: #050C9C;
-    height: 50px;
+    height: 95px;
     /* position: fixed; */
-    justify-content: center;
 }
-#logo{
-    border-color: black;
-    margin-top: 0.5%;
-    margin-left: 2%;
-    display: inline;
-    height: 30px;
-    width: 33.5px;  
-    /* background-color: blue; */
-    background-image: url(rk_logo.png);
-    background-size: contain;
-    border-radius: 50%;
-    border-radius: 50px;
-    /* box-shadow: 0px 0px 10px orange; */
-}
+
 #heading{
     margin-top: 0.5%;
     margin-left: 2%;
     display: inline-block;
-    text-decoration: underline;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* text-decoration: underline; */
+    font-family: 'Times New Roman','Georgia';
+    font-weight: 600;
+    font-size: xxx-large;
+    font-style: italic;
 }
 #nav-bar{
     display: flex;
@@ -40,32 +33,47 @@
     justify-content: center;
 }
 #login_button{
-    margin-top: 0.75%;
-    margin-left: 5%;
+    margin-top: 1.00%;
+    margin-left: 4%;
     /* color: ; */
-    background-color: #3572EF;
-    /* box-shadow: 0px 0px 10px blue; */
-    width: 60px;
-    border-radius: 10%;
-    padding-top: 2px;
+    background-color: #A7E6FF;
+    box-shadow: 0px 0px 10px blue;
+    width: 80px;
+    border-radius: 10px;
+    padding-top: 10px;
+    color: #050C9C;
     text-align: center;
-    font-size: larger;  
-    height: 25px;
+    font-size: 20px;  
+    height: 35px;
 }
 #product-button{
-    font-size: larger;
-    margin-top: 0.75%;
-    margin-left: 5%;
+    font-size: 25px;
+    /* font-size: larger; */
+    margin-top: 1.50%;
+    margin-left: 4%;
+}
+#contact_button{
+    font-size: 25px;
+    margin-top: 1.50%;
+    margin-left: 4%;
 }
 #home_button{
-    font-size: larger;
-    margin-top: 0.75%;
+    margin-left: 19%;
+    font-size: 25px;
+    margin-top: 1.50%;
 }
 #login_button:hover{
     background-color: red;
+    color: white;
     box-shadow: 0px 0px 10px blue;
 }
 #product-button:hover{
+    /* text-decoration: underline; */
+    /* background-color: red; */
+    color: red;
+    /* box-shadow-bottom:  0px 0px 10px blue; */
+}
+#contact_button:hover{
     /* text-decoration: underline; */
     /* background-color: red; */
     color: red;
