@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+a{
+    text-decoration: inherit;
+    color: inherit;
+}
+#header{
+    display: flex;
+    padding-top: 20px;
+    background-color: #050C9C;
+    height: 95px;
+    justify-content: center;
+    /* position: fixed; */
+}
+
+#heading{
+    margin-top: 0.5%;
+    margin-left: 2%;
+    display: inline-block;
+    /* text-decoration: underline; */
+    font-family: 'Times New Roman','Georgia';
+    font-weight: 600;
+    color: #A7E6FF;
+    font-size: xxx-large;
+    font-style: italic;
+}
+#form-section{
+
+    box-shadow: 0px 0px 20px black;
+    margin-top: 6%;
+    width: 40%;
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: #050C9C;
+}
+#form-heading{
+    font-size: 40px;
+    margin-top: 8%;
+    color: #A7E6FF;
+}
+#form-fields{
+    display: flex;
+    flex-direction: row;
+}
+#left-form{
+    display: inline-flex;
+    flex-direction: column;
+}
+#right-form{
+    display: inline-flex;
+    flex-direction: column;
+
+}
+#username{
+    color: #A7E6FF;
+    /* margin-left: %; */
+    margin-top: 20%;
+    font-size: x-large;
+}
+#password{
+    color: #A7E6FF;
+    margin-top: 32%;
+    font-size: x-large;
+}
+#username-field{
+    margin-top: 20%;
+    font-size: x-large;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#password-field{
+    margin-top: 12%;
+    margin-right: 5%;
+    margin-left: 5%;
+    font-size: x-large;
+}
+#submit_button{
+    font-size: x-large;
+    width: 100px;
+    height: 30px;
+    margin-top: 7%;
+    border-radius: 10px;
+}
+#new_user{
+    display: inline-block;
+    margin-top: 5%;
+    font-size: x-large;
+    margin-bottom: 5%;
+    color: #A7E6FF;
+}
+#submit_button:hover{
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 10px #A7E6FF;;
+}
+body{
+    text-align: center;
+    background-color: #A7E6FF;
+    color: white;
+}
