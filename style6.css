@@ -94,7 +94,7 @@ a{
 }
 .order-box{
     width: 250px;
-    margin: 5px 80px 5px 140px;
+    margin: 5px 40px 5px 75px;
     height: fit-content;
     border-radius: 10%;
     text-align: center;
@@ -121,7 +121,30 @@ a{
     box-shadow: 5px 10px 20px black;
 }
 #more-button{
-    
+    /* margi; */
+    /* top:78%;
+    right: 2%; */
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    /* position:absolute; */
+    display: inline-block;
+    margin-left: 92%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    background-color: #050C9C;
+}
+#more{
+    margin-top: 4%;
+}
+#more:hover{
+    box-shadow: 0px 0px 15px black ;
+}
+#footer{
+    background-color: #050C9C;
 }
 body{
     background-color: #A7E6FF;
