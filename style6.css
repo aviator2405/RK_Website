@@ -93,9 +93,9 @@ a{
     margin-left: 2%;
 }
 .order-box{
-    width: 200px;
-    margin: 5px 100px 5px 160px;
-    height: 150px;
+    width: 250px;
+    margin: 5px 80px 5px 140px;
+    height: fit-content;
     border-radius: 10%;
     text-align: center;
     color: #A7E6FF;
@@ -107,6 +107,21 @@ a{
 .or-id{
     display: inline-block;
     margin: 3%;
+}
+.or-status{
+    color: greenyellow;
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+.pickup{
+    display: inline-block;
+    margin: 3%;
+}
+.order-box:hover{
+    box-shadow: 5px 10px 20px black;
+}
+#more-button{
+    
 }
 body{
     background-color: #A7E6FF;
