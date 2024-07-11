@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    border: 0;
+   
 }
 a{
     text-decoration: inherit;
@@ -39,7 +39,7 @@ a{
     margin-left: 4%;
     /* color: ; */
     background-color: #A7E6FF;
-    box-shadow: 0px 0px 10px blue;
+    /* box-shadow: 0px 0px 10px blue; */
     width: 110px;
     border-radius: 20px;
     padding-top: 10px;
@@ -145,6 +145,97 @@ a{
 }
 #footer{
     background-color: #050C9C;
+}
+#footer-heading{
+    font-family:  Georgia,'Times New Roman';
+    text-align: center;
+    margin-bottom: 2%;
+    text-decoration: underline;
+    text-decoration: italic;
+}
+#contact-us-form{
+    display: flex;
+    
+}
+#left-of-form{
+    width: 200px;
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 2%;
+    /* width:; */
+}
+#right-of-form{
+    border-width: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.right-content{
+    font-size: 20px;
+    margin-top: 1%;
+    border-color: black;
+    width: 100%;
+}
+.left-content{
+    font-weight: 900;
+    text-align: right;
+    font-size: 20px;
+    margin-top: 5%;
+}
+#message-label{
+    margin-top: 29%;
+}
+#footer{
+    display: flex;
+    justify-content: space-evenly;
+    /* justify-content: end; */
+    padding-right: 5%;
+}
+textarea{
+    resize: none;
+}
+#form-container{
+    width: 39%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #A7E6FF;
+    padding:1%;
+    color: #050C9C;
+    border-radius: 10px;
+}
+.form-button{
+    background-color: #050C9C;
+    color: #A7E6FF;
+    width: 80px;
+    font-size: x-large;
+    display: inline-block;
+    margin: 2% 2% 0% 0%;
+}
+#contact-div{
+    width: 50%;
+    padding-top: 1%;
+    /* margin-right:; */
+}
+#contact-list{
+    font-size: x-large;
+    margin-left: 8%;
+    margin-top: 3%;
+    color: white;
+}
+#heading-2{
+    margin-top: 3%;
+    margin-left: 2%;
+    display: inline-block;
+    /* text-decoration: underline; */
+    font-family: 'Times New Roman','Georgia';
+    font-weight: 600;
+    color: #A7E6FF;
+    font-size: xxx-large;
+    font-style: italic;
+}
+#copyright{
+    background-color: #A7E6FF;
+    color: #050C9C;
+    text-align: center;
 }
 body{
     background-color: #A7E6FF;
