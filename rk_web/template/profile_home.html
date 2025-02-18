@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page_title">Welcome Firm_name</title>
+    <link href="/static/style5.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css">
+</head>
+<body>
+    <header id="header">
+        <h1 id="heading"> RK PATEL AND COMPANY</h1>
+        <a href={% url "configureOrder" %} id="con_or_button">CONFIGURE ORDERS</a>
+        <a id="my_or_button" href="{% url "orderdetails" %}">MY ORDERS</a>
+        <a id="report_button" href="{% url "report" %}">REPORT</a>
+        <a id="login_button" href="{% url "logout" %}">{{username}}</a> 
+    </header>
+    <section id="body-section">
+        <h1 id="firm_welcome">Welcome M/s __</h1>
+        <div class="line"></div>
+        <h1 id="sub-heading">My Orders</h1>
+        <table id="orders-table">
+        <div id="orders-container" class="order-container">
+        </div>
+        </table>
+        <a href="{% url "orderdetails" %}">
+            <div id="more-button">
+                <p id="more">More</p>
+            </div>
+        </a>
+    </section>
+    <footer id="footer">
+        <div id="contact-div">
+            <h1 id="heading-2"> RK PATEL AND COMPANY</h1>
+            <ul id="contact-list">
+                <li>Address:<a href="https://maps.app.goo.gl/2drcPGUeNkdjbbDS7"> Ganga Sagar, Garha Road, Madan Mahal, Jabalpur, Madhya Pradesh, Pincode- 482003</a></li>
+                <li>Phone Number: +91-9424372014, +91-9424712014</li>
+                <li>Email :<a href="mailto:rp240502@gmail.com"> rp240502@gmail.com</a></li>
+                <li>Instagram: <a href="https://www.instagram.com/rk_patel_and_company?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><u><i>RK. Patel and Company</i></u></a></li>
+                <li>Facebook: <a href="https://www.facebook.com/profile.php?id=61554203605786&mibextid=ZbWKwL"><u><i>RK Patel and Company</i></u></a></li>
+            </ul>
+        </div>
+        <div id="form-container">
+            <h1 id="footer-heading"> Contact Us</h1>
+            <form id="contact-us-form" action = {% url "feedback" %} method="POST">
+                {% csrf_token %}
+                <div id="left-of-form">
+                    <label for="firm-name" class="left-content">Firm Name</label>
+                    <label for="phone-number" class="left-content">Phone Number</label>
+                    <label for="Email" class="left-content">Email</label>
+                    <label for="message" class="left-content" id="message-label">Message</label>
+                </div>
+                <div id="right-of-form">
+                    <input id="feed_firm_name" class="right-content" type="text" placeholder="Enter Your Firm Name" required="true" name='firmname'>
+                    <input id="feed_phone" class="right-content" type="text" maxlength="10" name="phone" required="true" placeholder="Enter your Phone Number here">
+                    <input id="feed_email" class="right-content" type="email" name="email" placeholder="example@company.com">
+                    <textarea class="right-content" id="message" name="message" rows="4" cols="50" required="true" placeholder="Enter your message here"></textarea>
+                    <div>
+                        <input id="sub-but" class="form-button" type="submit" name="submit" value="Send">
+                        <input id="reset-but" class="form-button" type="reset" name="reset" value="Reset">  
+                        <span><i><b>{{email_status}}</b></i></span>
+                    </div>    
+                </div>    
+            </form>
+        </div>
+    </footer>
+    <p id="copyright">&copy; Copyright 2024 R.K. Patel and Company. All rights reserved.</p>
+    <script type="text/javascript">
+        window.variableId = "{{ userID }}";
+    </script>
+    <script src="/static/script_profile_home.js"></script>
+</body>
+</html>

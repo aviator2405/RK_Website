@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style10.css">
+</head>
+<body>
+    <header id="header">
+        <h1 id="heading"> RK PATEL AND COMPANY</h1>
+        <a id="con_or_button" href="{% url "home" %}">HOME</a>
+        <a id="login_button" href="{% url "login" %}">Login</a> 
+    </header>
+    
+    <section>
+        <h1 id="firm_welcome"><i>HELP</i></h1>
+        <div class="line"></div>
+    </section>
+
+    <section>
+        <ul type="circle">
+            <li><H1 class="subheading"><i>Guide of Program</i></H1></li>
+            <div id="guide_video"><iframe width="900" height="345" src="https://www.youtube.com/embed/TVF3VIUctZQ?si=O05niAEx585rJwYS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+            <li><H1 class="subheading"><i>For more Help <a href="{% url "contact" %}"> <u>Contact Us</u></a></i></H1></li>
+        </ul>
+    </section>
+</body>

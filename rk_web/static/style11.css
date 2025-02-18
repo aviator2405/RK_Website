@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+a{
+    text-decoration: inherit;
+    color: inherit;
+}
+#header{
+    display: flex;
+    padding-top: 20px;
+    background-color: #050C9C;
+    height: 95px;
+    /* position: fixed; */
+}
+
+#heading{
+    margin-top: 0.5%;
+    margin-left: 2%;
+    display: inline-block;
+    /* text-decoration: underline; */
+    font-family: 'Times New Roman','Georgia';
+    font-weight: 600;
+    color: #A7E6FF;
+    font-size: xxx-large;
+    font-style: italic;
+}
+#nav-bar{
+    display: flex;
+    /* position: fixed; */
+    background-color: #050C9C;
+    height: 50px;
+    justify-content: center;
+}
+#login_button{
+
+    margin-top: 1.00%;
+    margin-left: 4%;
+    /* color: ; */
+    background-color: #A7E6FF;
+    /* box-shadow: 0px 0px 10px blue; */
+    width: 110px;
+    border-radius: 20px;
+    padding-top: 10px;
+    color: #050C9C;
+    text-align: center;
+    font-size: 20px;  
+    height: 35px;
+}
+
+#my_or_button{
+    font-size: 20px;
+    margin-top: 1.75%;
+    margin-left: 42%;
+    color: #A7E6FF;
+}
+#con_or_button{
+    margin-left: 30%;
+    font-size: 20px;
+    margin-top: 1.75%;
+    color: #A7E6FF;
+}
+
+/* HOVERING PROPERTIES STARTS */
+
+#login_button:hover{
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 10px blue;
+}
+#my_or_button:hover{
+    color: red;
+}
+#con_or_button:hover{
+    color: red;
+}
+#copyright{
+    background-color: #A7E6FF;
+    color: #050C9C;
+    text-align: center;
+    margin-top: 2%;
+}
+#firm_welcome{
+    margin: 2%;
+    font-size: xx-large;
+    text-align: left;
+    color: #050C9C;
+    font-family: 'Times New Roman','Georgia';
+    font-weight: 600;
+    /* font-size: xxx-large; */
+    font-style: italic;
+}
+.line{
+    width: 100%;
+    height: 2px;
+    background-color: #050C9C;
+}
+
+#form_heading{
+    margin-top: 5%;
+    text-align: center;
+    font-size: xxx-large;
+    text-decoration: underline;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#report_form_section{
+    margin-top: 0%;
+    margin-bottom: 5%;
+    margin-left: 28%;
+    /* text-align: center; */
+    width: fit-content;
+    box-shadow: 0px 0px 10px #050C9C;
+    background-color: #050C9C;
+    border-radius: 10px;
+}
+
+#form_holder{
+    display: block;
+    margin-top: 9%;
+    box-shadow: 0px 0px 10px #050C9C;
+    /* width: fit-content; */
+}
+
+#footer-heading{
+    font-family:  Georgia,'Times New Roman';
+    text-align: center;
+    margin-bottom: 2%;
+    text-decoration: underline;
+    font-style: italic;
+    font-size: xxx-large;
+    color: #050C9C;
+    margin-top: 8%;
+    margin-left: 6%;
+}
+#contact-us-form{
+    display: flex;
+    
+}
+#left-of-form{
+    width: 200px;
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 2%;
+    /* width:; */
+    /* background-color: #050C9C; */
+}
+#right-of-form{
+    border-width: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.right-content{
+    font-size: 20px;
+    margin-top: 1%;
+    border-color: black;
+    width: 500px;
+}
+.left-content{
+    font-weight: 900;
+    text-align: right;
+    font-size: 20px;
+    margin-top: 5%;
+    color: #A7E6FF;
+}
+#message-label{
+    margin-top: 29%;
+}
+#screenshot-label{
+    margin-top: 45%;
+}
+#footer{
+    display: flex;
+    justify-content: space-evenly;
+    /* justify-content: end; */
+    padding-right: 5%;
+}
+textarea{
+    resize: none;
+}
+#form-container{
+    width: 39%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    background-color: #A7E6FF;
+    padding:1%;
+    color: #050C9C;
+    border-radius: 10px;
+    font-size: xx-large ;
+    background-color: #050C9C;
+    padding: 20px 0px 20px 50px;
+    display: block;
+    border-radius: 10%;
+}
+.form-button{
+    background-color: #A7E6FF;
+    color: #050C9C;
+    width: 80px;
+    font-size: x-large;
+    display: inline-block;
+    margin: 2% 2% 0% 0%;
+}
+#contact-div{
+    width: 50%;
+    padding-top: 1%;
+    /* margin-right:; */
+}
+#contact-list{
+    font-size: x-large;
+    margin-left: 8%;
+    margin-top: 3%;
+    color: white;
+}
+#heading-2{
+    margin-top: 3%;
+    margin-left: 2%;
+    display: inline-block;
+    /* text-decoration: underline; */
+    font-family: 'Times New Roman','Georgia';
+    font-weight: 600;
+    color: #A7E6FF;
+    font-size: xxx-large;
+    font-style: italic;
+}
+
+
+body{
+    background-color: #A7E6FF;
+    color: white;
+}

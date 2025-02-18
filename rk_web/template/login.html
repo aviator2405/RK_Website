@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="/static/style2.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css">
+</head>
+<body>
+    <header id="header">
+        <h1 id="heading">RK PATEL AND COMPANY</h1>
+    </header>
+    <section id="form-section">
+        <H1 id="form-heading">Login</H1>
+        <form id="login-form" action="{% url "profile_home" %}" method="post">
+            {% csrf_token %}
+            {{ message }}
+            <div id="form-field">
+                <div id="left-form">
+                    <label id="username">Username</label>
+                    <label id="password">Password</label>
+                </div>
+                <div id="right-form">
+                    <input id="username-field" type="username" required="True" name='username'>
+                    <input id="password-field" type="password" required="True" name='password'>
+                    <label id="password-field">
+                        <input type="checkbox" name="remember_me"> Remember Me
+                    </label>
+                </div>
+            </div>
+            
+            <input id="submit_button" type="submit" name="Submit" value="Submit" ><br>
+            <a id="new_user" href="{% url "new-user" %}">New User?</a>
+            <!-- <script>
+                function func(event){
+                    event.preventDefault();
+                    a=prompt("enter OTP")
+                    console.log(a)
+                    return          
+                }
+            </script> -->
+        </form>
+    </section>
+    <p id="copyright">&copy; 2024 R.K. Patel and Company. All rights reserved.</p>
+</body>
+</html>
