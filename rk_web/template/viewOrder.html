@@ -42,3 +42,47 @@
     </section>
 
 </body>
+<script>
+    // Example order ID; replace with actual dynamic ID
+    const orderId = 2;
+    const apiUrl = `/api/order/details/${orderId}/`;
+
+    // Fetch order details
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.title = `Order ID - ${data.order_id}`;
+            document.getElementById("firm_welcome").innerHTML = `<i>ORDER ID - ${data.order_id}</i>`;
+            document.querySelector("#desc_container h2:nth-child(1)").textContent = `DATE OF ORDER - ${data.order_date}`;
+            document.querySelector("#desc_container h2:nth-child(2)").innerHTML = `STATUS - <a style="color:${data.status === 'COMPLETED' ? 'rgb(0, 194, 0)' : 'red'};">${data.status}</a>`;
+            document.querySelector("#desc_container h2:nth-child(3)").textContent = `DATE OF PICKUP - ${data.pickup_date}`;
+
+            const orderSummaryTable = document.getElementById("orderSummaryTable");
+
+            data.items.forEach((item, index) => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td class="tabledata">${index + 1}</td>
+                    <td class="tabledata">${item.breadth}</td>
+                    <td class="tabledata">${item.height}</td>
+                    <td class="tabledata">${item.length}</td>
+                    <td class="tabledata">${item.quantity}</td>
+                    <td class="tabledata">${item.category}</td>
+                `;
+
+                orderSummaryTable.appendChild(row);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching order details:", error);
+        });
+</script>
+
+
+</html>

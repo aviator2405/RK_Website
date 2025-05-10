@@ -110,7 +110,8 @@ async function getFirmData() {
   }
   
   // Call the function to fetch and get data by username
-  getDataByUsername(3);  // Replace with the username you want to search for
+  
+  getDataByUsername(Number(userID));  // Replace with the username you want to search for
   
   
   

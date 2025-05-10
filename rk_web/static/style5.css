@@ -250,12 +250,14 @@ textarea{
     display: flex;
     flex-wrap: wrap;
     gap: 10px; /* Add some space between the boxes */
+    cursor : context-menu   ;
 }
 .order-box {
     border: 1px solid #ccc;
     padding: 10px;
     width: 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 .line {
     border-top: 1px solid #ccc;

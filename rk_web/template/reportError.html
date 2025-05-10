@@ -18,7 +18,8 @@
     <section id="report_form_section">
         <div id="form-container">
             
-            <form id="contact-us-form">
+            <form id="contact-us-form" method = "POST" action ="{% url "report" %}" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div id="left-of-form">
                     <label for="firm-name" class="left-content">Firm Name</label>
                     <label for="phone-number" class="left-content">Phone Number</label>
@@ -27,14 +28,15 @@
                     <label for="message" class="left-content" id="screenshot-label">Screenshots</label>
                 </div>
                 <div id="right-of-form">
-                    <input id="feed_firm_name" class="right-content" type="text" placeholder="Enter Your Firm Name" required="true" required>
-                    <input id="feed_phone" class="right-content" type="text" maxlength="10" name="phone" required="true" placeholder="Enter your Phone Number here" required>
-                    <input id="feed_email" class="right-content" type="email" name="email" placeholder="example@company.com" required>
-                    <textarea class="right-content" id="message" name="message" rows="4" cols="50" required="true" placeholder="Please Describe your Problem" required></textarea>
-                    <input id="feed_email" class="right-content" type="file" name="error_image" accept="image/*" required>
+                    <input id="feed_firm_name" name="firm_name_entry" class="right-content" type="text" placeholder="Enter Your Firm Name" required="true" required>
+                    <input id="feed_phone" class="right-content" type="text" maxlength="10" name="phone_entry" required="true" placeholder="Enter your Phone Number here" required>
+                    <input id="feed_email" class="right-content" type="email" name="email_entry" placeholder="example@company.com" required>
+                    <textarea class="right-content" id="message" name="message_entry" rows="4" cols="50" required="true" placeholder="Please Describe your Problem" required></textarea>
+                    <input  class="right-content" type="file" name="error_image_entry" accept="image/*" required style="color:white">
                     <div>
                         <input id="sub-but" class="form-button" type="submit" name="submit" value="Send">
-                        <input id="reset-but" class="form-button" type="reset" name="reset" value="Reset">   
+                        <input id="reset-but" class="form-button" type="reset" name="reset" value="Reset">  
+                        <span id="message" style="color:{{ color }}">{{ message }}</span> 
                     </div>    
                 </div>    
             </form>

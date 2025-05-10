@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const breadth = document.getElementById("breadthInput");
     const height = document.getElementById("heightInput");
@@ -5,19 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const quantity = document.getElementById("quantityInput");
     const purpose = document.getElementById("AccPurInput");
     const tableBody = document.getElementById('orderSummaryTable');
-
+    const usernameElement = document.getElementById("login_button");
+    // const userID = document.getElementById("f_userID").textContent
+    // console.log(userID)
     let serialCounter = 1;
-    let orderItems = []; // To store the items
+    let orderItems = [];
+    let firmID = null;
 
     const getColorSelection = () => {
-        // Get the selected color
         const colorRadios = document.getElementsByName("choice");
         for (const radio of colorRadios) {
             if (radio.checked) {
-                return radio.value; // Return the selected value
+                return radio.value;
             }
         }
-        return "NA"; // Default value if no color is selected
+        return "NA";
     };
 
     const checkEmptyField = () => {
@@ -25,11 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateSerialNumbers = () => {
-        // Update all the serial numbers in the table
         Array.from(tableBody.children).forEach((row, index) => {
             const serialNumberCell = row.querySelector('.serialNum');
             if (serialNumberCell) {
-                serialNumberCell.innerText = index + 1; // Set serial number starting from 1
+                serialNumberCell.innerText = index + 1;
             }
         });
     };
@@ -40,12 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const selectedColor = getColorSelection(); // Get selected color
+        const selectedColor = getColorSelection();
 
-        // Create a new row
         const newRow = document.createElement('tr');
-
-        // Create cells and populate them
         newRow.innerHTML = `
             <td class="tableEntry firstcol serialNum">${serialCounter}</td>
             <td class="tableEntry secondcol">${breadth.value}</td>
@@ -57,11 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i class="fa fa-trash-o" style="font-size:20px;color:red;cursor:pointer"></i>
             </td>
         `;
-
-        // Append the new row to the table body
         tableBody.appendChild(newRow);
 
-        // Add the item to the orderItems array
         orderItems.push({
             breadth: breadth.value,
             height: height.value,
@@ -71,31 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
             purpose: purpose.value
         });
 
-        // Increment serialCounter only after adding a row
         serialCounter += 1;
-
-        // Clear input fields after adding the item
         resetFunction();
 
-        // Add event listener to the remove button
         const removeButton = newRow.querySelector('.fa-trash-o');
         removeButton.addEventListener('click', () => {
             const rowIndex = Array.from(tableBody.children).indexOf(newRow);
             tableBody.removeChild(newRow);
-
-            // Remove the corresponding item from the orderItems array
             orderItems.splice(rowIndex, 1);
-
-            // Update serial numbers after removal
             updateSerialNumbers();
-
-            // Reset serialCounter if the table is empty
             if (tableBody.children.length === 0) {
                 serialCounter = 1;
             }
         });
 
-        // Update serial numbers after each add
         updateSerialNumbers();
     };
 
@@ -105,46 +90,92 @@ document.addEventListener('DOMContentLoaded', () => {
         length.value = "";
         quantity.value = "";
         purpose.value = "NA";
-        // Reset color selection
         const colorRadios = document.getElementsByName("choice");
         for (const radio of colorRadios) {
             radio.checked = false;
         }
     };
 
+    const getFirmDetails = (userID) => {
+        const firmApiUrl = `http://127.0.0.1:8000/api/firm/${userID}/`;
+
+        return fetch(firmApiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch firm details: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.length > 0) {
+                    firmID = data[0].id; // Assuming the firm ID is in the response
+                }
+                console.log("Firm details retrieved:", data);
+            })
+            .catch(error => {
+                console.error("Error fetching firm details:", error);
+                alert("Unable to retrieve firm details. Please try again.");
+            });
+    };
+
     const submitOrder = () => {
-        // Prepare data to send to API
+        if (orderItems.length === 0) {
+            alert("Please add at least one item to the order.");
+            return;
+        }
+
+        if (!confirm("Are you sure you want to place this order?")) {
+            return;
+        }
+
+        if (!firmID) {
+            alert("Firm details not available. Unable to proceed.");
+            return;
+        }
+
         const orderData = {
-            items: orderItems
+            items: orderItems,
+            firm_id: firmID
         };
 
-        // Send data to the API
-        fetch('http://127.0.0.1:8000/api/orders/', {
+        fetch('http://127.0.0.1:8000/api/placeOrders/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(orderData)
         })
-        .then(response => response.json())
-        .then(data => {
-            alert("Order submitted successfully!");
-            console.log('Success:', data);
-            // Optionally clear the table and reset orderItems
-            tableBody.innerHTML = "";
-            orderItems = [];
-            serialCounter = 1;
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to submit order.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert("Order submitted successfully!");
+                console.log('Success:', data);
+                tableBody.innerHTML = "";
+                orderItems = [];
+                serialCounter = 1;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Failed to place order. Please try again.");
+            });
+    };
+
+    const initializePage = () => {
+        let userID = document.getElementById("f_userID").textContent
+        getFirmDetails(userID); // Fetch the firm details
     };
 
     const addButton = document.getElementById("addItemButton");
     const resetButton = document.getElementById("reset");
-    const submitButton = document.getElementById("placeOrdButton"); // Assuming there is a submit button in your HTML
+    const submitButton = document.getElementById("placeOrdButton");
 
     addButton.addEventListener("click", addFunction);
     resetButton.addEventListener("click", resetFunction);
-    submitButton.addEventListener("click", submitOrder); // Event listener for the submit button
+    submitButton.addEventListener("click", submitOrder);
+
+    initializePage(); // Initialize the page by fetching firm details
 });

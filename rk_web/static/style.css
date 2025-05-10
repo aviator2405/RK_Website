@@ -108,19 +108,19 @@ a{
 }
 #left-section{
     width: 50%;
-    height: 627px;
+    height: 605px;
     background-image: url('/static/LEFT-SECTION.jpg');
     background-size: COVER;
 }
 #right-section{
     width: 50%;
-    height: 627px;
+    height: 605px;
     color: #050C9C;
     /* background-color: blue; */
 }
 #TimMer{
     
-    margin-top: 10%;
+    margin-top: 5%;
     text-align: center;
     font-size: 65px;
     text-decoration: underline;
@@ -133,12 +133,12 @@ a{
     font-size: 45px;
 }
 #follow{
-    margin-top: 14%;
+    margin-top: 12%;
     margin-left: 6%;
     font-size: 35px;
 }
 #insta_qr{
-    top: 515px;
+    top: 495px;
     right: 70px;
     border-radius: 20px;
     position: absolute;

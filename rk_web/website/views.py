@@ -5,8 +5,11 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import *
-from .models import firm_info as firmTable
+from .models import firm_info as firmTable,reports
 from django.core.mail import EmailMultiAlternatives
+from static import GdriveUploader
+from datetime import datetime
+
 user=""
 password =""
 userID = 0
@@ -109,7 +112,7 @@ def email_send(request):
 def configureOrder(request):
     user = User.objects.get(id=userID)
     print (user.username)
-    return render(request,"configureOrder.html",{"username":g_username})
+    return render(request,"configureOrder.html",{"username":g_username, "userID":userID})
 
 def contactPage(request):
     return render(request,"contact.html")
@@ -124,7 +127,45 @@ def helpRender(request):
 
 def reportRender(request):
     global g_username
-    return render(request,"reportError.html",{"username":g_username})
+    if request.method == "GET":
+        return render(request,"reportError.html",{"username":g_username,'color':'white', 'message':''})
+    elif request.method == "POST":
+        firmName = request.POST.get("firm_name_entry")
+        phone = request.POST.get("phone_entry")
+        email = request.POST.get("email_entry")
+        description = request.POST.get("message_entry")
+
+        print("POST Data:", request.POST)
+        print("FILES Data:", request.FILES)
+        image = request.FILES['error_image_entry']
+        
+        
+        temp_image_path = f"E:/rk_web/reportImages/{image}"
+        with open(temp_image_path, 'wb+') as destination:
+            for chunk in image.chunks():
+                destination.write(chunk)
+
+        print(firmName)
+        print(phone)
+        print(email)
+        print(description)
+        
+        title = str(firmName)+ " " + str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        print(title)
+        file_url = GdriveUploader.upload_photo(temp_image_path,title)
+        print(file_url)
+        if file_url != None :
+            photo = reports.objects.create(firm_info=firmName, phone=phone, email=email, message=description,error_image_url=file_url)
+            photo.save()
+            return render(request,"reportError.html",{"username":g_username,'color':'rgb(4, 255, 0)', 'message':'Report Sent'})
+        else:
+            return render(request,"reportError.html",{"username":g_username,'color':'red', 'message':'An Error Occured'})
+
+# def placereport(request):
+#     firmname = request.POST.get("feed_firm_name")
+#     phone = request.POST.get("feed_phone")
+#     email = request.POST.get("feed_email")
+#     email = request.POST.get("feed_email")
 
 def viewOrderRender(request):
     return render(request,"viewOrder.html")

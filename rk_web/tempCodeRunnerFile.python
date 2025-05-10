@@ -1,0 +1,54 @@
+import pdfplumber
+import spacy
+
+def extract_text_from_pdf(pdf_path):
+    """
+    Extracts text from a PDF file.
+
+    :param pdf_path: Path to the PDF file
+    :return: Extracted text
+    """
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            # Extract text from all pages
+            text = ""
+            for page in pdf.pages:
+                text += page.extract_text()
+            return text.strip()
+    except Exception as e:
+        return f"An error occurred: {e}"
+
+def find_important_tokens(text):
+    """
+    Identifies important tokens (keywords) from the given text.
+
+    :param text: Input text
+    :return: List of important tokens
+    """
+    try:
+        # Load the spaCy English model
+        nlp = spacy.load("en_core_web_sm")
+        doc = nlp(text)
+        
+        # Extract important tokens (proper nouns, numbers, and other entities)
+        important_tokens = [token.text for token in doc if token.pos_ in {"PROPN", "NUM"} or token.ent_type_]
+        return important_tokens
+    except Exception as e:
+        return f"An error occurred during token extraction: {e}"
+
+# Path to the PDF file
+pdf_path = "CN DSA EXCELLENCE.pdf"  # Replace with your PDF file path
+# pdf_path = "MP FITT IITD Artificial Intelligence Builder Certificate_736.pdf"  # Replace with your PDF file path
+
+# Step 1: Extract text from the certificate
+extracted_text = extract_text_from_pdf(pdf_path)
+
+# Step 2: Find important tokens from the extracted text
+important_tokens = find_important_tokens(extracted_text)
+
+# Display results
+print("Extracted Text:")
+print(extracted_text)
+print("\nImportant Tokens:")
+print(important_tokens)
+

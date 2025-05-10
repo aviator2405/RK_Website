@@ -32,13 +32,14 @@ class order(models.Model):
  
 class order_item(models.Model):
     categories = [
-        ('Colour', 'Colour'),
+        ('One_Side_Colour', 'One_Side_Colour'),
+        ('Two_Side_Colour', 'Two_Side_Colour'),
         ('White', 'White'),
     ]
     breadth = models.FloatField()
     height = models.FloatField()
     length = models.FloatField()
-    category= models.CharField(max_length=10, choices=categories, default='Colour')
+    category= models.CharField(max_length=20, choices=categories, default='White')
     quantity = models.IntegerField()
     price = models.IntegerField(default=0)
     acceptance = models.TextField()
@@ -49,3 +50,10 @@ class user_table(User):
         return str(self.username)
     pass
 
+
+class reports(models.Model):
+    firm_info = models.CharField(max_length=100)
+    phone = models.IntegerField()
+    email = models.EmailField()
+    message = models.CharField(max_length=500)
+    error_image_url = models.URLField()    
